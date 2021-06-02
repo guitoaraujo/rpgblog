@@ -1,5 +1,5 @@
 class TesteController < ApplicationController
   def index
-    @n = 123
+    @n = 456
   end
 end
