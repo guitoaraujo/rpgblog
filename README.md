@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## GIT 
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* change to master branch "git checkout master"
+* update it "git pull"
+* create a new branch for your task "git checkout -b YOUR BRANCH"
+* complete your task
+* add your changes "git add FILE_PATH"
+* commit your changes 'git commit -m "MESSAGE"'
+* send your changes to github "git push" if you face any error, just use the command suggested by git
+* wait for code review
+* resolve any issues if needed
+* wait for approve
+* merger to master
