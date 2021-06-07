@@ -10,6 +10,8 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1 or /articles/1.json
   def show
+    @comment = Comment.new
+    @comments = @article.comments
   end
 
   # GET /articles/new
@@ -58,6 +60,12 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def comments_create
+    comment = Comment.create(comment_params)
+    article = Article.find(params[:article_id])
+    redirect_to article_path(article)
+  end  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
@@ -72,4 +80,8 @@ class ArticlesController < ApplicationController
     def article_params
       params.require(:article).permit(:title, :description, :rulebook_id).merge(user_id: current_user.id)
     end
+
+    def comment_params
+      params.permit(:body, :article_id).merge(user_id: current_user.id)
+    end  
 end

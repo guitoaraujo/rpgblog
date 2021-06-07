@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_04_085826) do
+ActiveRecord::Schema.define(version: 2021_06_06_154446) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 2021_06_04_085826) do
     t.integer "rulebook_id", null: false
     t.index ["rulebook_id"], name: "index_articles_on_rulebook_id"
     t.index ["user_id"], name: "index_articles_on_user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "body"
+    t.integer "article_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["article_id"], name: "index_comments_on_article_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "rulebooks", force: :cascade do |t|
@@ -37,10 +47,13 @@ ActiveRecord::Schema.define(version: 2021_06_04_085826) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "articles", "rulebooks"
   add_foreign_key "articles", "users"
+  add_foreign_key "comments", "articles"
+  add_foreign_key "comments", "users"
 end

@@ -17,8 +17,29 @@
 
 <p>
   <strong>User:</strong>
-  <%= @article.user.email %>
+  <%= @article.user.name %>
 </p>
 
 <%= link_to 'Edit', edit_article_path(@article) %> |
 <%= link_to 'Back', articles_path %>
+
+<p>
+  <strong>Comments: <%= @comments.count %></strong>
+  <ul>
+    <% @comments.each do |comment| %>
+      <li><%= comment.body %></li>
+    <% end %>
+  </ul>
+</p>
+
+<%= form_tag(article_comments_path) do %>
+  <div class="field">
+    <%= label_tag :comment %>
+    <%= text_field_tag :body %>
+    <%= hidden_field_tag :article_id, @article.id %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag %>
+  </div>
+<% end %>

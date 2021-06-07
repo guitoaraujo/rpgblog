@@ -21,10 +21,10 @@
     <%= form.text_area :description %>
   </div>
 
-    <div class="field">
-      <%= form.label :rulebook_id %>
-      <%= form.select :rulebook_id, @rulebooks, selected: rulebook %>
-    </div>
+  <div class="field">
+    <%= form.label :rulebook_id %>
+    <%= form.select :rulebook_id, @rulebooks, selected: rulebook %>
+  </div>
 
   <div class="actions">
     <%= form.submit %>
